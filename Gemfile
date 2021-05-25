@@ -9,6 +9,8 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.7'
 gem 'simple_form'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
+# Font-Awesome gem for fa-icon helper
+gem "font-awesome-rails"
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

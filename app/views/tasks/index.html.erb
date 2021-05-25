@@ -1,9 +1,37 @@
-<h1>All tasks</h1>
-<ul>
-  <% @tasks.each do |t| %>
-   <li><%= link_to t.title, task_path(t) %> <%= t.completed %> <%= link_to "Delete",
-   task_path(t),
-   method: :delete,
-   data: { confirm: "Are you sure you want to delete this task?" } %></li>
-  <% end %>
-</ul>
+<h1 class="text-center p-3">All tasks</h1>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+      <!--   Builds names of tasks, linking to each individual task -->
+      <ul class="text-left">
+      <% @tasks.each do |t| %>
+        <li class="p-3 alert alert-info"><% if t.completed == true %>
+            <%= link_to task_path(t), method: :post do %>
+              <%= fa_icon "check-square" %>
+            <% end %>
+          <% else %>
+            <%= link_to task_path(t), method: :post do %>
+              <%= fa_icon "square" %>
+            <% end %>
+          <% end %>
+        <span> - </span>
+      <!-- Within the list-item loop still, implementing delete function with Font-Awesome Bin icon -->
+
+        <%= link_to t.title, task_path(t) %>
+        <span> - </span>
+
+        <%= link_to task_path(t), method: :delete, data: { confirm: "Are you sure you want to delete this task?" } do %>
+          <%= fa_icon "trash-alt" %>
+        <% end %>
+
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="mx-auto" style="width: 140px">
+  <%= link_to "Add a new task", new_task_path, class: "btn btn-primary" %>
+</div>
